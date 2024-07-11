@@ -1,2 +1,41 @@
-# MurMur
+# Mix of Agents MurMur
 MoA MurMur is an advanced framework utilizing large language models (LLMs) combined with an orchestration system.
+A sophisticated chat application leveraging multiple AI models for enhanced conversational experiences.
+
+Key Features
+
+Multi-Agent Architecture: Utilizes a layered approach with multiple AI models (Mistral, LLaVA, LLaMA, Qwen, Gemma) for comprehensive and diverse responses.
+Dynamic Model Selection: Intelligently selects appropriate models based on the nature of user queries.
+Advanced UI: Built with Tkinter, featuring a customizable interface with adjustable font sizes and preference settings.
+Image Analysis: Supports image uploads and analysis using the LLaVA model.
+Web Search Integration: Incorporates DuckDuckGo, Wikipedia, and Yahoo search capabilities for up-to-date information.
+Response Quality Assurance: Implements a sophisticated evaluation system to ensure high-quality outputs.
+Caching Mechanism: Employs a response cache to improve efficiency and reduce redundant API calls.
+Asynchronous Processing: Utilizes asyncio for non-blocking operations and improved responsiveness.
+
+Technical Details
+
+Language: Python
+UI Framework: Tkinter
+AI Integration: Uses local API endpoints (localhost:11434) for AI model interactions
+External Libraries: Pillow, BeautifulSoup, scikit-learn, markdown, and more
+Asynchronous Programming: Leverages asyncio and aiohttp for efficient concurrent operations
+
+Getting Started
+
+Ensure you have Python installed on your system.
+Install required dependencies:
+Copypip install tkinter pillow aiohttp beautifulsoup4 scikit-learn markdown
+
+Set up the local AI models API endpoint (default: http://localhost:11434).
+Run the main script to launch the application.
+
+Usage
+
+Start a conversation by typing in the input field and pressing Enter or clicking Send.
+Upload images for analysis using the "Upload File" button.
+Adjust font size and user preferences as needed.
+Utilize web search integrations by enabling the respective checkboxes.
+
+Contributing
+Contributions to enhance functionality, improve model integration, or optimize performance are welcome. Please submit pull requests or open issues for any bugs or feature requests.
