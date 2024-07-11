@@ -14,7 +14,7 @@ MoA MurMur is an advanced framework utilizing large language models (LLMs) combi
 - **Orchestration System**: Intelligently manages and coordinates multiple LLMs to produce cohesive and high-quality outputs.
 - **Dynamic Model Selection**: Intelligently selects appropriate models based on the nature of user queries.
 - **Advanced UI**: Built with Tkinter, featuring a customizable interface with adjustable font sizes and preference settings.
-- **Image Analysis**: Supports image uploads and analysis using the LLaVA 13B model.
+- **Image Analysis**: Supports image uploads and analysis using the LLaVA:13B model.
 - **Web Search Integration**: Incorporates DuckDuckGo, Wikipedia, and Yahoo search capabilities for up-to-date information.
 - **Response Quality Assurance**: Implements a sophisticated evaluation system to ensure high-quality outputs.
 - **Caching Mechanism**: Employs a response cache to improve efficiency and reduce redundant API calls.
@@ -34,6 +34,7 @@ MoA MurMur is an advanced framework utilizing large language models (LLMs) combi
 
 - Python 3.x
 - Ollama: This project requires Ollama to be installed and running. Ollama is used to run the AI models locally. You can find installation instructions and more information about Ollama at [https://ollama.ai/](https://ollama.ai/)
+- Local Models: All mentioned models (Mistral, LLaVA:13B, LLaMA3:8B, Qwen2:7B, and Gemma2:9B) must be installed locally through Ollama. Refer to Ollama's documentation for instructions on how to install these specific models.
 
 
 ## Getting Started
