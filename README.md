@@ -62,4 +62,10 @@ Contributions to enhance functionality, improve model integration, or optimize p
 
 ## License
 
-This 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. This means you are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the following conditions:
+
+- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+For the full license text, refer to the LICENSE file in the repository.
