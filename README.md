@@ -36,6 +36,9 @@ MoA MurMur is an advanced framework utilizing large language models (LLMs) combi
 - Ollama: This project requires Ollama to be installed and running. Ollama is used to run the AI models locally. You can find installation instructions and more information about Ollama at [https://ollama.ai/](https://ollama.ai/)
 - Local Models: All mentioned models (Mistral, LLaVA:13B, LLaMA3:8B, Qwen2:7B, and Gemma2:9B) must be installed locally through Ollama. Refer to Ollama's documentation for instructions on how to install these specific models.
 
+```
+ollama run gemma2
+```
 
 ## Getting Started
 
