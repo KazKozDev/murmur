@@ -1,0 +1,6 @@
+aiohttp>=3.8.0
+asyncio>=3.4.3
+python-dotenv>=0.19.0
+logging>=0.5.1.2
+dataclasses>=0.6
+typing>=3.7.4
