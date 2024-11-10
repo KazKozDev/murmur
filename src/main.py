@@ -336,6 +336,11 @@ class AgentOrchestrator:
 
 
 async def main():
+    
+    print("\nMix of Agents Murmur v1.1.0:") 
+    print("An intelligent orchestration system integrating multiple LLMs built on Ollama architecture.")
+    print("Leverages gemma2:9B, mistral-nemo:latest, and llama3.2-vision:11b models for distributed task processing.\n")    
+    
     orchestrator = AgentOrchestrator()
     
     try:
