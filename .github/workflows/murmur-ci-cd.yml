@@ -1,0 +1,97 @@
+name: Murmur CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 0 * * 1'
+
+env:
+  OLLAMA_MODELS: "mistral-nemo:latest,llama3.2-vision:11b,gemma2:9b"
+  PYTHONPATH: src
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+        
+    - name: Cache pip packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-lint-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-lint-
+          
+    - name: Install lint dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install black isort flake8 flake8-docstrings mypy bandit safety
+        
+    - name: Check code formatting
+      run: |
+        black src/murmur tests --check --diff
+        isort src/murmur tests --check-only --diff
+        
+    - name: Type checking with mypy
+      run: |
+        mypy src/murmur tests --strict
+        
+    - name: Lint with flake8
+      run: |
+        flake8 src/murmur tests --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 src/murmur tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+        
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-asyncio pytest-cov pytest-mock aioresponses
+        
+    - name: Install Ollama
+      run: |
+        curl https://ollama.ai/install.sh | sh
+        
+    - name: Start Ollama service
+      run: |
+        ollama serve &
+        sleep 5
+        
+    - name: Pull required models
+      run: |
+        IFS=',' read -ra MODELS <<< "$OLLAMA_MODELS"
+        for model in "${MODELS[@]}"; do
+          ollama pull "$model"
+        done
+        
+    - name: Run tests
+      run: |
+        pytest tests/ -v --asyncio-mode=strict --cov=src/murmur --cov-report=xml
+        
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./coverage.xml
