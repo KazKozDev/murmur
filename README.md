@@ -1,14 +1,6 @@
 # Murmur
 ![Murmur](https://raw.githubusercontent.com/KazKozDev/murmur/main/murmur-banner.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-[![GitHub issues](https://img.shields.io/github/issues/KazKozDev/murmur)](https://github.com/KazKozDev/murmur/issues)
-[![GitHub stars](https://img.shields.io/github/stars/KazKozDev/murmur)](https://github.com/KazKozDev/murmur/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/KazKozDev/murmur)](https://github.com/KazKozDev/murmur/network)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/KazKozDev/murmur)](https://github.com/KazKozDev/murmur/pulls)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![aiohttp](https://img.shields.io/badge/aiohttp-3.8+-blue.svg)](https://docs.aiohttp.org/)
 
 A sophisticated multi-agent system that orchestrates different specialized AI agents using local LLM models to process and respond to user queries. The system implements a pipeline of Interpreter, Reasoner, Generator, and Critic agents to provide well-thought-out and refined responses.
 
