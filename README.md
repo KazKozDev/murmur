@@ -60,7 +60,6 @@ Murmur allows for flexible configuration to suit various deployment environments
 
 - **LLM Server URL:**  
   The base URL for the local LLM server is configurable via environment variables. By default, it is set to `http://localhost:11434`.  
-  You can modify the URL in the `.env` file to point to your desired LLM service.
 
 - **Logging:**  
   Logging is configured in the source code (see `src/main.py`) and prints INFO level logs to help track system behavior and debug potential issues.
