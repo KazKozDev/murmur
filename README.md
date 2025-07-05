@@ -1,143 +1,92 @@
-# Murmur
-![Murmur](https://raw.githubusercontent.com/KazKozDev/murmur/main/murmur-banner.png)
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/dd45a96e-a809-44da-b51f-421fdc3302f0" width="180">
+</div>
+
+# Murmur 
+
+*A Mix of Agents Orchestration System for Distributed LLM Processing*
+<div align="left">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue?logo=python" alt="Python Version">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License">
+  <img src="https://img.shields.io/badge/Code%20Style-Black-black" alt="Code Style: Black">
+  <img src="https://img.shields.io/badge/Linting-flake8-blue" alt="Linting: flake8">
+  <img src="https://img.shields.io/badge/Type%20Checking-mypy-blue" alt="Type Checking: mypy">
+</div>
+<br>
+Murmur is an intelligent orchestration system built to integrate multiple large language models (LLMs) into a cohesive multi-agent pipeline. By coordinating agents specialized in interpreting, reasoning, generating, and critiquing responses, Murmur enables distributed task processing that leverages the strengths of models like mistral-nemo:latest, llama3.2-vision:11b, and gemma2:9b to deliver robust and confident answers to user input. The project is designed for environments where local LLM serving is preferred, ensuring low latency and fine-grained process control.  
+<br><br>
+
+The system is implemented in Python using asynchronous programming patterns with aiohttp and asyncio, ensuring that each request is handled efficiently. Murmur’s modular architecture makes it an good choice for developers looking to experiment with LLM orchestration, test different agent configurations, or deploy a local solution for conversational AI tasks.
+
+## Features  
+- **Multi-Agent Pipeline:**  
+  - **Interpreter:** Analyzes user messages to extract intent, key points, and requirements.  
+  - **Reasoner:** Breaks down the interpreted message, identifies critical factors, and formulates a logical approach.  
+  - **Generator:** Creates well-structured responses directly addressing the user’s needs based on provided reasoning.  
+  - **Critic:** Reviews and refines the generated response for accuracy, clarity, and completeness.  
+- **Asynchronous Processing:** Built with Python’s asyncio and aiohttp for efficient, non-blocking request handling.  
+- **Local LLM Integration:** Communicates with a local LLM server to ensure rapid processing and low latency.  
+- **Code Quality Tools:** Integrated with Black, isort, flake8, and mypy to enforce coding standards and static type checking.
+
+## Requirements  
+- **Python:** Version 3.8 or higher  
+- **Libraries:**  
+  - aiohttp (for asynchronous HTTP requests)  
+  - python-dotenv (for environment configuration)  
+  - pytest, pytest-asyncio, pytest-aiohttp (for testing)  
+  - Black, isort, flake8, mypy (for linting, formatting, and type checking)  
+- **Local LLM Server:** Running at the default URL (http://localhost:11434) or a configurable endpoint as specified in the environment.  
+
+## Installation  
+1. **Clone the Repository:**  
+   ```bash
+   git clone https://github.com/KazKozDev/murmur.git
+   cd murmur
+   ```
+
+2. **Create and Activate a Virtual Environment:**  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use: venv\Scripts\activate
+   ```
+
+3. **Install the Dependencies:**  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Configuration  
+Murmur allows for flexible configuration to suit various deployment environments:  
+
+- **LLM Server URL:**  
+  The base URL for the local LLM server is configurable via environment variables. By default, it is set to `http://localhost:11434`.  
+  You can modify the URL in the `.env` file to point to your desired LLM service.
+
+- **Logging:**  
+  Logging is configured in the source code (see `src/main.py`) and prints INFO level logs to help track system behavior and debug potential issues.
+
+- **Agent Prompts:**  
+  Each agent (Interpreter, Reasoner, Generator, Critic) uses a prompt template defined in the code. You can modify these templates in `src/main.py` within the `_create_prompt` methods to customize agent behavior.
+
+## Usage  
+To run Murmur and start interacting with the multi-agent system, use the following instructions:
+
+1. **Start the Application:**  
+   ```bash
+   python src/main.py
+   ```
+
+2. **Interact with the System:**  
+   Once running, you will see a welcome message similar to:  
+   “Mix of Agents Murmur v1.1.0: An intelligent orchestration system integrating multiple LLMs built on Ollama architecture.”  
+   You can then enter your messages directly in the terminal. The system will process your input by sequentially routing it through the interpreter, reasoner, generator, and critic agents, eventually printing a detailed response along with a confidence score.
+
+---
+
+If you like this project, please give it a star ⭐
+
+For questions, feedback, or support, reach out to:
+
+[Artem KK](https://www.linkedin.com/in/kazkozdev/) | MIT [LICENSE](LICENSE)
 
 
-A sophisticated multi-agent system that orchestrates different specialized AI agents using local LLM models to process and respond to user queries. The system implements a pipeline of Interpreter, Reasoner, Generator, and Critic agents to provide well-thought-out and refined responses.
-
-## 🌟 Features
-
-- **Multi-Agent Architecture**: Four specialized agents working in concert:
-  - **Interpreter**: Analyzes user intent and context
-  - **Reasoner**: Develops logical approach to the problem
-  - **Generator**: Creates initial responses
-  - **Critic**: Reviews and refines generated content
-
-- **Local LLM Integration**: Works with locally hosted language models through a REST API
-- **Asynchronous Processing**: Built with `asyncio` for efficient concurrent operations
-- **Robust Error Handling**: Comprehensive error management with retries and graceful fallbacks
-- **Conversation Memory**: Maintains context through conversation history
-- **Confidence Scoring**: Evaluates response quality with multiple metrics
-
-## 🔧 Prerequisites
-
-- Python 3.7+
-- Local LLM server (compatible with Ollama API)
-- Required Python packages:
-  ```
-  aiohttp
-  asyncio
-  ```
-
-## 🚀 Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/KazKozDev/murmur.git
-cd murmur
-```
-
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-3. Ensure your local LLM server is running (default: http://localhost:11434)
-
-## 💻 Usage
-
-1. Navigate to the project directory and run:
-```bash
-cd murmur
-python src/main.py
-```
-
-Or navigate directly to the source directory:
-```bash
-cd murmur/src
-python main.py
-```
-
-2. Enter your queries when prompted. Type 'quit' to exit.
-
-Example interaction:
-```python
-Enter your message: What is the capital of France?
-
-Response: The capital of France is Paris.
-Confidence: 0.95
-```
-
-## 🏗️ Architecture
-
-The system follows a pipeline architecture:
-
-1. **User Input** → **Interpreter Agent**
-   - Analyzes core intent and context
-   - Identifies implicit requirements
-
-2. **Interpreted Message** → **Reasoner Agent**
-   - Breaks down the problem
-   - Develops logical approach
-
-3. **Reasoning** → **Generator Agent**
-   - Creates initial response
-   - Structures content clearly
-
-4. **Generated Content** → **Critic Agent**
-   - Reviews for accuracy and completeness
-   - Suggests improvements
-   - Produces final version
-
-## ⚙️ Configuration
-
-The system uses the following default models:
-- Interpreter: mistral-nemo:latest
-- Reasoner: llama3.2-vision:11b
-- Generator: gemma2:9b
-- Critic: llama3.2-vision:11b
-
-Models can be configured by modifying the `AgentOrchestrator` initialization.
-
-## 🔐 Error Handling
-
-The system implements multiple layers of error handling:
-- Connection retries (max 3 attempts)
-- Timeout management
-- Graceful degradation
-- Comprehensive error logging
-
-## 🤝 Contributing
-
-1. Fork the repository (https://github.com/KazKozDev/murmur/fork)
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🪲 Known Issues
-
-- High CPU usage with multiple concurrent requests
-- Memory consumption may increase with long conversations
-- Some LLM models may require significant local resources
-
-## 🔜 Future Improvements
-
-- [ ] Add support for streaming responses
-- [ ] Implement agent personality customization
-- [ ] Add websocket support for real-time communication
-- [ ] Enhance conversation memory management
-- [ ] Add support for more LLM providers
-- [ ] Implement response caching
-
-## 📞 Support
-
-For support, please open an issue in the [GitHub repository](https://github.com/KazKozDev/murmur/issues) or contact the maintainers.
-
-## 🙏 Acknowledgments
-
-- Thanks to the Ollama team for their local LLM server
-- Inspired by multi-agent architectures in AI systems
