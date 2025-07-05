@@ -7,6 +7,7 @@
   <img src="https://img.shields.io/badge/Code%20Style-Black-black" alt="Code Style: Black">
   <img src="https://img.shields.io/badge/Linting-flake8-blue" alt="Linting: flake8">
   <img src="https://img.shields.io/badge/Type%20Checking-mypy-blue" alt="Type Checking: mypy">
+  <img src="https://img.shields.io/badge/LLM-Mix%20of%20Agents-orange" alt="Mix of Agents">
 </div>
 <br>
 <div align="left">
