@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/dd45a96e-a809-44da-b51f-421fdc3302f0" width="180">
-</div>
-
 # Murmur 
 
 *A Mix of Agents Orchestration System for Distributed LLM Processing*
@@ -13,6 +9,9 @@
   <img src="https://img.shields.io/badge/Type%20Checking-mypy-blue" alt="Type Checking: mypy">
 </div>
 <br>
+<div align="left">
+  <img src="https://github.com/user-attachments/assets/dd45a96e-a809-44da-b51f-421fdc3302f0" width="200">
+</div>
 Murmur is an intelligent orchestration system built to integrate multiple large language models (LLMs) into a cohesive multi-agent pipeline. By coordinating agents specialized in interpreting, reasoning, generating, and critiquing responses, Murmur enables distributed task processing that leverages the strengths of models like mistral-nemo:latest, llama3.2-vision:11b, and gemma2:9b to deliver robust and confident answers to user input. The project is designed for environments where local LLM serving is preferred, ensuring low latency and fine-grained process control.  
 <br><br>
 
